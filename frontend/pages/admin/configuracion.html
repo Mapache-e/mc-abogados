@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/configuracion.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item active">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Configuración</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar configuración...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="settings-content">
+                <div class="page-heading">
+                    <p class="section-eyebrow">ADMINISTRACIÓN DEL SISTEMA</p>
+                    <h2>Configuración</h2>
+                    <p>Gestiona la información del estudio, tu perfil y los parámetros utilizados en la plataforma.</p>
+                </div>
+
+                <div class="message hidden" id="message"></div>
+
+                <div class="settings-layout">
+                    <nav class="settings-menu">
+                        <button class="settings-tab active" data-tab="study">Estudio jurídico</button>
+                        <button class="settings-tab" data-tab="profile">Mi perfil</button>
+                        <button class="settings-tab" data-tab="matters">Materias</button>
+                    </nav>
+
+                    <div class="settings-panels">
+                        <section class="settings-panel active" id="studyPanel">
+                            <div class="panel-header">
+                                <div>
+                                    <p class="card-eyebrow">DATOS INSTITUCIONALES</p>
+                                    <h3>Estudio jurídico</h3>
+                                </div>
+                            </div>
+
+                            <form id="studyForm" class="settings-form">
+                                <div class="form-grid">
+                                    <div class="form-group full-width">
+                                        <label for="studyName">Nombre del estudio *</label>
+                                        <input type="text" id="studyName" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="studyEmail">Correo</label>
+                                        <input type="email" id="studyEmail">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="studyPhone">Teléfono</label>
+                                        <input type="text" id="studyPhone">
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label for="studyAddress">Dirección</label>
+                                        <input type="text" id="studyAddress">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="currency">Moneda</label>
+                                        <select id="currency">
+                                            <option value="PEN">Soles peruanos (PEN)</option>
+                                            <option value="USD">Dólares estadounidenses (USD)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="primary-button">Guardar configuración</button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section class="settings-panel" id="profilePanel">
+                            <div class="panel-header">
+                                <div>
+                                    <p class="card-eyebrow">CUENTA DEL ADMINISTRADOR</p>
+                                    <h3>Mi perfil</h3>
+                                </div>
+                            </div>
+
+                            <form id="profileForm" class="settings-form">
+                                <div class="profile-preview">
+                                    <div class="profile-avatar" id="profileAvatar">MT</div>
+
+                                    <div>
+                                        <strong id="profilePreviewName">María Torres</strong>
+                                        <span>Administrador</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="profileName">Nombre completo *</label>
+                                        <input type="text" id="profileName" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="profileEmail">Correo *</label>
+                                        <input type="email" id="profileEmail" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="profilePhone">Teléfono</label>
+                                        <input type="text" id="profilePhone">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="profileDocument">Documento</label>
+                                        <input type="text" id="profileDocument">
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label for="profileAddress">Dirección</label>
+                                        <input type="text" id="profileAddress">
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label for="profilePhoto">URL de fotografía</label>
+                                        <input type="url" id="profilePhoto" placeholder="https://...">
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="primary-button">Guardar perfil</button>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section class="settings-panel" id="mattersPanel">
+                            <div class="panel-header">
+                                <div>
+                                    <p class="card-eyebrow">CATÁLOGO JURÍDICO</p>
+                                    <h3>Materias</h3>
+                                </div>
+                            </div>
+
+                            <form id="matterForm" class="matter-form">
+                                <input type="text" id="matterName" placeholder="Nueva materia..." required>
+                                <button type="submit" class="primary-button">Agregar materia</button>
+                            </form>
+
+                            <div class="matters-list" id="mattersList"></div>
+
+                            <div class="empty-state hidden" id="mattersEmpty">
+                                <span>◇</span>
+                                <p>No existen materias registradas.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/configuracion.js"></script>
+</body>
+</html>

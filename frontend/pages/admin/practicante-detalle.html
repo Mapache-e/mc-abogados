@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Practicante | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/practicante-detalle.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item active">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión de Practicantes</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar practicante...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="detail-content">
+                <div class="breadcrumb">
+                    <a href="./practicantes.html">Practicantes</a>
+                    <span>/</span>
+                    <span id="breadcrumbName">Detalle</span>
+                </div>
+
+                <div class="detail-error hidden" id="detailError">
+                    <strong>No se pudo cargar el practicante</strong>
+                    <p id="detailErrorMessage">Ocurrió un problema al consultar la información.</p>
+                    <a href="./practicantes.html">Volver a practicantes</a>
+                </div>
+
+                <div class="detail-body hidden" id="detailBody">
+                    <section class="profile-heading">
+                        <div class="profile-main">
+                            <div class="profile-avatar" id="profileAvatar">PR</div>
+
+                            <div>
+                                <p class="section-eyebrow">PRACTICANTE</p>
+
+                                <div class="title-row">
+                                    <h1 id="profileName">—</h1>
+                                    <span class="status-badge" id="profileStatus">Activo</span>
+                                </div>
+
+                                <p class="profile-subtitle" id="profileMatter">Sin materia asignada</p>
+                            </div>
+                        </div>
+
+                        <div class="heading-actions">
+                            <a href="./practicantes.html" class="secondary-button">Volver</a>
+                            <a href="./practicante-formulario.html" class="primary-button" id="editInternButton">Editar practicante</a>
+                        </div>
+                    </section>
+
+                    <section class="summary-grid">
+                        <article class="summary-card">
+                            <span>Expedientes asignados</span>
+                            <strong id="summaryCases">0</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Tareas pendientes</span>
+                            <strong id="summaryPending">0</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Tareas en curso</span>
+                            <strong id="summaryProgress">0</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Bloques disponibles</span>
+                            <strong id="summaryAvailability">0</strong>
+                        </article>
+                    </section>
+
+                    <section class="detail-layout">
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">INFORMACIÓN PERSONAL</p>
+                                        <h2>Datos del practicante</h2>
+                                    </div>
+                                </div>
+
+                                <div class="information-grid">
+                                    <div class="information-item">
+                                        <span>Nombre completo</span>
+                                        <strong id="infoName">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Materia</span>
+                                        <strong id="infoMatter">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Correo</span>
+                                        <strong id="infoEmail">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Teléfono</span>
+                                        <strong id="infoPhone">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Documento</span>
+                                        <strong id="infoDocument">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Estado</span>
+                                        <strong id="infoStatus">—</strong>
+                                    </div>
+
+                                    <div class="information-item full-width">
+                                        <span>Dirección</span>
+                                        <strong id="infoAddress">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">EXPEDIENTES</p>
+                                        <h2>Expedientes asignados</h2>
+                                    </div>
+
+                                    <span class="section-counter" id="casesCounter">0</span>
+                                </div>
+
+                                <div class="empty-state hidden" id="casesEmpty">
+                                    <span>▣</span>
+                                    <h3>Sin expedientes asignados</h3>
+                                    <p>El practicante no tiene expedientes asociados.</p>
+                                </div>
+
+                                <div class="table-container hidden" id="casesTableContainer">
+                                    <table class="detail-table">
+                                        <thead>
+                                            <tr>
+                                                <th>EXPEDIENTE</th>
+                                                <th>CLIENTE</th>
+                                                <th>MATERIA</th>
+                                                <th>ESTADO</th>
+                                                <th>PRÓXIMO HITO</th>
+                                                <th>ACCIÓN</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="casesTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">DISPONIBILIDAD</p>
+                                        <h2>Próximos bloques</h2>
+                                    </div>
+
+                                    <span class="section-counter" id="availabilityCounter">0</span>
+                                </div>
+
+                                <div class="availability-list" id="availabilityList"></div>
+
+                                <div class="empty-state hidden" id="availabilityEmpty">
+                                    <span>◫</span>
+                                    <h3>Sin disponibilidad registrada</h3>
+                                    <p>No existen bloques asociados al practicante.</p>
+                                </div>
+
+                                <a href="./disponibilidad-equipo.html" class="text-action">Gestionar disponibilidad</a>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">TAREAS</p>
+                                        <h2>Carga de trabajo</h2>
+                                    </div>
+
+                                    <span class="section-counter" id="tasksCounter">0</span>
+                                </div>
+
+                                <div class="tasks-list" id="tasksList"></div>
+
+                                <div class="empty-state hidden" id="tasksEmpty">
+                                    <span>✓</span>
+                                    <h3>Sin tareas asignadas</h3>
+                                    <p>Actualmente no existen tareas para este practicante.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/practicante-detalle.js"></script>
+</body>
+</html>

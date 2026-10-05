@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/clientes.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item active">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión de Clientes</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar cliente...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="clientes-content">
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">GESTIÓN COMERCIAL Y LEGAL</p>
+                        <h2>Clientes</h2>
+                        <p class="page-description">Consulta y administra la información de los clientes del estudio jurídico.</p>
+                    </div>
+
+                    <a href="./cliente-nuevo.html" class="new-client-button">
+                        <span class="plus">+</span>
+                        <span>Nuevo Cliente</span>
+                    </a>
+                </div>
+
+                <section class="summary-grid">
+                    <article class="summary-card">
+                        <span class="summary-label">Total de clientes</span>
+                        <strong id="totalClients">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="summary-label">Con expedientes activos</span>
+                        <strong id="clientsWithCases">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span class="summary-label">Sin expedientes activos</span>
+                        <strong id="clientsWithoutCases">0</strong>
+                    </article>
+                </section>
+
+                <section class="filters-card">
+                    <div class="search-container">
+                        <span class="search-icon">⌕</span>
+                        <input type="text" id="searchInput" placeholder="Buscar por nombre, documento, teléfono o correo...">
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="documentFilter">
+                            <option value="">Todos los documentos</option>
+                            <option value="DNI">DNI</option>
+                            <option value="RUC">RUC</option>
+                            <option value="CE">CE</option>
+                            <option value="PASAPORTE">Pasaporte</option>
+                        </select>
+
+                        <select id="caseFilter">
+                            <option value="">Todos los clientes</option>
+                            <option value="active">Con expedientes activos</option>
+                            <option value="inactive">Sin expedientes activos</option>
+                        </select>
+
+                        <button type="button" class="clear-filters" id="clearFilters">Limpiar filtros</button>
+                    </div>
+                </section>
+
+                <section class="clients-card">
+                    <div class="clients-header">
+                        <div>
+                            <h3>Directorio de clientes</h3>
+                            <p id="clientCounter">0 clientes encontrados</p>
+                        </div>
+                    </div>
+
+                    <div id="loadingState" class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando clientes...</p>
+                    </div>
+
+                    <div id="errorState" class="error-state hidden">
+                        <span>!</span>
+                        <p id="errorMessage">No se pudieron cargar los clientes.</p>
+                    </div>
+
+                    <div id="emptyState" class="empty-state hidden">
+                        <span>◇</span>
+                        <p>No se encontraron clientes con los filtros seleccionados.</p>
+                    </div>
+
+                    <div class="table-wrapper hidden" id="tableWrapper">
+                        <table class="clients-table">
+                            <thead>
+                                <tr>
+                                    <th>CLIENTE</th>
+                                    <th>DOCUMENTO</th>
+                                    <th>CONTACTO</th>
+                                    <th>CORREO</th>
+                                    <th>EXPEDIENTES ACTIVOS</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="clientsTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/clientes.js"></script>
+</body>
+</html>

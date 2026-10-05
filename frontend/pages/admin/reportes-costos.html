@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes y Costos | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/reportes-costos.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Reportes y Costos</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar movimiento...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="reports-content">
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">INTELIGENCIA Y CONTROL FINANCIERO</p>
+                        <h2>Reportes y Costos</h2>
+                        <p class="page-description">Analiza ingresos, costos, pagos pendientes y rendimiento económico del estudio jurídico.</p>
+                    </div>
+
+                    <a href="./recibo-nuevo.html" class="primary-action">
+                        <span>+</span>
+                        Nuevo recibo
+                    </a>
+                </div>
+
+                <div class="loading-state" id="loadingState">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando información financiera...</p>
+                </div>
+
+                <div class="error-state hidden" id="errorState">
+                    <span>!</span>
+                    <h3>No se pudieron cargar los reportes</h3>
+                    <p id="errorMessage">Ocurrió un problema al consultar la información.</p>
+                </div>
+
+                <div class="reports-body hidden" id="reportsBody">
+                    <section class="summary-grid">
+                        <article class="summary-card">
+                            <span>Total acordado</span>
+                            <strong id="totalAgreed">S/ 0.00</strong>
+                            <small>Servicios contratados</small>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Total cobrado</span>
+                            <strong id="totalCollected">S/ 0.00</strong>
+                            <small>Ingresos registrados</small>
+                        </article>
+
+                        <article class="summary-card warning">
+                            <span>Pendiente de cobro</span>
+                            <strong id="totalPending">S/ 0.00</strong>
+                            <small>Saldo por recuperar</small>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Costos directos</span>
+                            <strong id="totalCosts">S/ 0.00</strong>
+                            <small>Costos operativos</small>
+                        </article>
+
+                        <article class="summary-card success">
+                            <span>Margen bruto</span>
+                            <strong id="grossMargin">S/ 0.00</strong>
+                            <small>Resultado acumulado</small>
+                        </article>
+                    </section>
+
+                    <section class="analytics-grid">
+                        <article class="report-card chart-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">EVOLUCIÓN FINANCIERA</p>
+                                    <h3>Ingresos, costos y margen</h3>
+                                </div>
+
+                                <div class="chart-legend">
+                                    <span><i class="legend-dot collected"></i>Cobrado</span>
+                                    <span><i class="legend-dot costs"></i>Costos</span>
+                                    <span><i class="legend-dot margin"></i>Margen</span>
+                                </div>
+                            </div>
+
+                            <div class="chart-area">
+                                <div class="bar-chart" id="monthlyChart"></div>
+                            </div>
+                        </article>
+
+                        <article class="report-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">SERVICIOS</p>
+                                    <h3>Distribución económica</h3>
+                                </div>
+                            </div>
+
+                            <div class="services-list" id="servicesList"></div>
+
+                            <div class="empty-state hidden" id="servicesEmpty">
+                                <span>◇</span>
+                                <p>No existen servicios registrados.</p>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section class="analytics-grid secondary-analytics">
+                        <article class="report-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">EXPEDIENTES</p>
+                                    <h3>Distribución por estado</h3>
+                                </div>
+                            </div>
+
+                            <div class="distribution-list" id="statusDistribution"></div>
+                        </article>
+
+                        <article class="report-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">MATERIAS</p>
+                                    <h3>Expedientes por especialidad</h3>
+                                </div>
+                            </div>
+
+                            <div class="distribution-list" id="matterDistribution"></div>
+                        </article>
+                    </section>
+
+                    <section class="report-card pending-card">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-eyebrow">CUENTAS POR COBRAR</p>
+                                <h3>Pagos pendientes</h3>
+                                <p id="pendingCounter">0 pagos pendientes</p>
+                            </div>
+                        </div>
+
+                        <div class="empty-state hidden" id="pendingEmpty">
+                            <span>✓</span>
+                            <h4>Sin pagos pendientes</h4>
+                            <p>No existen saldos pendientes de cobro.</p>
+                        </div>
+
+                        <div class="table-container hidden" id="pendingTableContainer">
+                            <table class="financial-table">
+                                <thead>
+                                    <tr>
+                                        <th>CLIENTE</th>
+                                        <th>EXPEDIENTE</th>
+                                        <th>SERVICIO</th>
+                                        <th>ACORDADO</th>
+                                        <th>COBRADO</th>
+                                        <th>PENDIENTE</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIÓN</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="pendingTableBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="report-card movements-card">
+                        <div class="card-header movements-header">
+                            <div>
+                                <p class="card-eyebrow">CONTROL ECONÓMICO</p>
+                                <h3>Historial de movimientos</h3>
+                                <p id="movementCounter">0 movimientos encontrados</p>
+                            </div>
+
+                            <div class="movement-filters">
+                                <input type="text" id="movementSearch" placeholder="Buscar cliente, servicio o expediente...">
+
+                                <select id="paymentStatusFilter">
+                                    <option value="">Todos los estados</option>
+                                </select>
+
+                                <button type="button" id="clearMovementFilters">Limpiar</button>
+                            </div>
+                        </div>
+
+                        <div class="empty-state hidden" id="movementsEmpty">
+                            <span>◇</span>
+                            <p>No se encontraron movimientos económicos.</p>
+                        </div>
+
+                        <div class="table-container hidden" id="movementsTableContainer">
+                            <table class="financial-table movements-table">
+                                <thead>
+                                    <tr>
+                                        <th>FECHA</th>
+                                        <th>CLIENTE</th>
+                                        <th>SERVICIO</th>
+                                        <th>EXPEDIENTE</th>
+                                        <th>ACORDADO</th>
+                                        <th>COBRADO</th>
+                                        <th>COSTO</th>
+                                        <th>MARGEN</th>
+                                        <th>ESTADO</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="movementsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/reportes-costos.js"></script>
+</body>
+</html>

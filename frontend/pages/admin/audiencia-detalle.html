@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Audiencia | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/audiencia-detalle.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item active">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Agenda y Audiencias</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar audiencia...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="detail-content">
+                <div class="breadcrumb">
+                    <a href="./agenda-audiencias.html">Agenda y Audiencias</a>
+                    <span>/</span>
+                    <span id="breadcrumbCode">Detalle de audiencia</span>
+                </div>
+
+                <div class="detail-error hidden" id="detailError">
+                    <strong>No se pudo cargar la audiencia</strong>
+                    <p id="detailErrorMessage">Ocurrió un problema al consultar la información.</p>
+                    <a href="./agenda-audiencias.html">Volver a la agenda</a>
+                </div>
+
+                <div class="detail-body hidden" id="detailBody">
+                    <section class="audience-heading">
+                        <div>
+                            <p class="section-eyebrow">AUDIENCIA</p>
+
+                            <div class="title-row">
+                                <h1 id="audienceTitle">Audiencia</h1>
+                                <span class="status-badge" id="audienceStatus">Programada</span>
+                            </div>
+
+                            <div class="audience-meta">
+                                <span id="audienceCode">—</span>
+                                <span class="meta-separator"></span>
+                                <span id="audienceType">—</span>
+                                <span class="meta-separator"></span>
+                                <span id="audienceModality">—</span>
+                            </div>
+                        </div>
+
+                        <div class="heading-actions">
+                            <a href="./agenda-audiencias.html" class="secondary-button">Volver</a>
+                            <a href="./audiencia-formulario.html" class="secondary-button" id="editAudienceButton">Editar audiencia</a>
+                            <a href="#" class="primary-button hidden" id="virtualAccessButton" target="_blank" rel="noopener noreferrer">Ingresar a audiencia</a>
+                        </div>
+                    </section>
+
+                    <section class="summary-grid">
+                        <article class="summary-card date-summary">
+                            <span>Fecha</span>
+                            <strong id="summaryDate">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Hora</span>
+                            <strong id="summaryTime">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Modalidad</span>
+                            <strong id="summaryModality">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Participantes</span>
+                            <strong id="summaryParticipants">0</strong>
+                        </article>
+                    </section>
+
+                    <section class="detail-layout">
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">INFORMACIÓN DE LA AUDIENCIA</p>
+                                        <h2>Datos generales</h2>
+                                    </div>
+                                </div>
+
+                                <div class="information-grid">
+                                    <div class="information-item">
+                                        <span>Tipo de audiencia</span>
+                                        <strong id="infoType">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Modalidad</span>
+                                        <strong id="infoModality">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Fecha</span>
+                                        <strong id="infoDate">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Horario</span>
+                                        <strong id="infoTime">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Juzgado / Sala</span>
+                                        <strong id="infoCourt">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Ubicación</span>
+                                        <strong id="infoLocation">—</strong>
+                                    </div>
+
+                                    <div class="information-item full-width">
+                                        <span>Enlace virtual</span>
+                                        <a href="#" id="infoVirtualLink" class="detail-link hidden" target="_blank" rel="noopener noreferrer">Abrir enlace de audiencia</a>
+                                        <strong id="infoVirtualEmpty">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">EXPEDIENTE VINCULADO</p>
+                                        <h2>Información jurídica</h2>
+                                    </div>
+
+                                    <a href="./expedientes.html" class="text-action" id="caseDetailButton">Ver expediente</a>
+                                </div>
+
+                                <div class="entity-profile">
+                                    <div class="entity-icon">▣</div>
+
+                                    <div class="entity-profile-main">
+                                        <span class="entity-label">EXPEDIENTE</span>
+                                        <h3 id="caseCode">—</h3>
+                                        <p id="caseTitle">—</p>
+                                    </div>
+                                </div>
+
+                                <div class="entity-information">
+                                    <div>
+                                        <span>Número de expediente</span>
+                                        <strong id="caseNumber">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Carpeta fiscal</span>
+                                        <strong id="caseFiscalFolder">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Denuncia policial</span>
+                                        <strong id="casePoliceReport">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">REGISTRO DE AUDIENCIA</p>
+                                        <h2>Grabación y notas</h2>
+                                    </div>
+                                </div>
+
+                                <div class="recording-section">
+                                    <div class="recording-box" id="recordingBox">
+                                        <div class="recording-icon">▶</div>
+
+                                        <div>
+                                            <strong>Grabación de audiencia</strong>
+                                            <p id="recordingText">No hay grabación registrada.</p>
+                                        </div>
+
+                                        <a href="#" class="recording-button hidden" id="recordingButton" target="_blank" rel="noopener noreferrer">Ver grabación</a>
+                                    </div>
+
+                                    <div class="notes-box">
+                                        <span>Notas de la audiencia</span>
+                                        <p id="audienceNotes">Sin notas registradas.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">RESPONSABLE</p>
+                                        <h2>Abogado asignado</h2>
+                                    </div>
+                                </div>
+
+                                <div class="person-card">
+                                    <div class="person-avatar" id="lawyerAvatar">AB</div>
+
+                                    <div class="person-main">
+                                        <h3 id="lawyerName">—</h3>
+                                        <p>Responsable de la audiencia</p>
+                                    </div>
+
+                                    <a href="./abogados.html" class="person-action" id="lawyerDetailButton">Ver perfil</a>
+                                </div>
+
+                                <div class="person-contact">
+                                    <div>
+                                        <span>Correo</span>
+                                        <strong id="lawyerEmail">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Teléfono</span>
+                                        <strong id="lawyerPhone">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">CLIENTE</p>
+                                        <h2>Cliente vinculado</h2>
+                                    </div>
+                                </div>
+
+                                <div class="person-card">
+                                    <div class="person-avatar client" id="clientAvatar">CL</div>
+
+                                    <div class="person-main">
+                                        <h3 id="clientName">—</h3>
+                                        <p>Cliente del expediente</p>
+                                    </div>
+
+                                    <a href="./clientes.html" class="person-action" id="clientDetailButton">Ver ficha</a>
+                                </div>
+
+                                <div class="person-contact">
+                                    <div>
+                                        <span>Correo</span>
+                                        <strong id="clientEmail">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Teléfono</span>
+                                        <strong id="clientPhone">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">PARTICIPANTES</p>
+                                        <h2>Asistentes</h2>
+                                    </div>
+
+                                    <span class="section-counter" id="participantsCounter">0</span>
+                                </div>
+
+                                <div class="participants-list" id="participantsList"></div>
+
+                                <div class="empty-state hidden" id="participantsEmpty">
+                                    <div class="empty-icon">♧</div>
+                                    <h3>Sin participantes registrados</h3>
+                                    <p>No existen asistentes asociados a esta audiencia.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">DOCUMENTACIÓN</p>
+                                <h2>Documentos vinculados</h2>
+                            </div>
+
+                            <span class="section-counter" id="documentsCounter">0 documentos</span>
+                        </div>
+
+                        <div class="empty-state hidden" id="documentsEmpty">
+                            <div class="empty-icon">▤</div>
+                            <h3>Sin documentos vinculados</h3>
+                            <p>No existen documentos asociados a esta audiencia.</p>
+                        </div>
+
+                        <div class="table-container hidden" id="documentsTableContainer">
+                            <table class="detail-table">
+                                <thead>
+                                    <tr>
+                                        <th>DOCUMENTO</th>
+                                        <th>TIPO</th>
+                                        <th>FECHA</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIÓN</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="documentsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/audiencia-detalle.js"></script>
+</body>
+</html>

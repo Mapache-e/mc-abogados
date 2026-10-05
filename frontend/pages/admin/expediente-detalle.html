@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Expediente | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/expediente-detalle.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&amp;C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item active">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" id="logoutButton" class="logout-button">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button type="button" class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
+                    <h1 class="topbar-title">Gestión de Expedientes</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20l-4-4"></path>
+                        </svg>
+                        <input type="search" id="globalSearch" placeholder="Buscar expediente..." autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button type="button" class="notification-button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="detail-content">
+                <div class="breadcrumb">
+                    <a href="./expedientes.html">Expedientes</a>
+                    <span>›</span>
+                    <span id="breadcrumbCode">Detalle</span>
+                </div>
+
+                <section class="case-heading">
+                    <div>
+                        <div class="case-heading-top">
+                            <p class="section-eyebrow" id="caseCode">EXPEDIENTE</p>
+                            <span class="status-badge" id="caseStatus">Cargando</span>
+                        </div>
+
+                        <h1 id="caseNumber">Cargando expediente...</h1>
+                        <p class="case-subtitle" id="caseTitle">Obteniendo información del expediente.</p>
+
+                        <div class="case-meta">
+                            <span id="caseClient">Cliente: —</span>
+                            <span class="meta-separator"></span>
+                            <span id="caseMatter">Materia: —</span>
+                        </div>
+                    </div>
+
+                    <div class="heading-actions">
+                        <a href="./expedientes.html" class="back-button">← Volver a Expedientes</a>
+                        <a href="./expediente-formulario.html" class="primary-button" id="editCaseButton">Editar expediente</a>
+                    </div>
+                </section>
+
+                <div id="detailError" class="detail-error hidden">
+                    <strong>No se pudo cargar el expediente</strong>
+                    <p id="detailErrorMessage">Verifique la información e inténtelo nuevamente.</p>
+                    <a href="./expedientes.html">Volver al listado</a>
+                </div>
+
+                <div id="detailBody" class="detail-body">
+                    <section class="detail-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">INFORMACIÓN GENERAL</p>
+                                <h2>Datos del Expediente</h2>
+                            </div>
+                        </div>
+
+                        <div class="information-grid">
+                            <div class="information-item">
+                                <span>Número de Expediente</span>
+                                <strong id="infoCaseNumber">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Materia</span>
+                                <strong id="infoMatter">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Carpeta Fiscal</span>
+                                <strong id="infoFiscalFolder">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Órgano / Juzgado</span>
+                                <strong id="infoCourt">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Denuncia Policial</span>
+                                <strong id="infoPoliceReport">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Contraparte</span>
+                                <strong id="infoCounterparty">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Urgencia</span>
+                                <strong id="infoUrgency">—</strong>
+                            </div>
+
+                            <div class="information-item">
+                                <span>Documentos Completos</span>
+                                <strong id="infoDocumentsComplete">—</strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="people-grid">
+                        <article class="detail-card person-card">
+                            <div class="card-title">
+                                <div>
+                                    <p class="card-eyebrow">CLIENTE</p>
+                                    <h2>Información del Cliente</h2>
+                                </div>
+                            </div>
+
+                            <div class="person-main">
+                                <div class="person-avatar" id="clientAvatar">CL</div>
+
+                                <div>
+                                    <h3 id="clientName">—</h3>
+                                    <p id="clientDocument">Documento no registrado</p>
+                                </div>
+                            </div>
+
+                            <div class="person-information">
+                                <div>
+                                    <span>Correo</span>
+                                    <strong id="clientEmail">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Teléfono</span>
+                                    <strong id="clientPhone">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Representante Legal</span>
+                                    <strong id="clientRepresentative">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Dirección</span>
+                                    <strong id="clientAddress">—</strong>
+                                </div>
+                            </div>
+
+                            <button type="button" class="text-action" id="viewClientButton">Ver ficha del cliente →</button>
+                        </article>
+
+                        <article class="detail-card person-card">
+                            <div class="card-title">
+                                <div>
+                                    <p class="card-eyebrow">RESPONSABLE</p>
+                                    <h2>Abogado Responsable</h2>
+                                </div>
+                            </div>
+
+                            <div class="person-main">
+                                <div class="person-avatar lawyer-avatar" id="lawyerAvatar">AB</div>
+
+                                <div>
+                                    <h3 id="lawyerName">Sin responsable asignado</h3>
+                                    <p id="lawyerSpecialty">—</p>
+                                </div>
+                            </div>
+
+                            <div class="person-information">
+                                <div>
+                                    <span>Correo</span>
+                                    <strong id="lawyerEmail">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Teléfono</span>
+                                    <strong id="lawyerPhone">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Número de Colegiatura</span>
+                                    <strong id="lawyerRegistration">—</strong>
+                                </div>
+
+                                <div>
+                                    <span>Colegio de Abogados</span>
+                                    <strong id="lawyerAssociation">—</strong>
+                                </div>
+                            </div>
+
+                            <button type="button" class="text-action" id="viewLawyerButton">Ver perfil del abogado →</button>
+                        </article>
+                    </section>
+
+                    <section class="detail-card milestone-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">SEGUIMIENTO</p>
+                                <h2>Próximo Hito</h2>
+                            </div>
+                        </div>
+
+                        <div class="milestone-content">
+                            <div class="milestone-date">
+                                <strong id="milestoneDay">—</strong>
+                                <span id="milestoneMonth">—</span>
+                            </div>
+
+                            <div class="milestone-line">
+                                <span class="milestone-dot"></span>
+                            </div>
+
+                            <div class="milestone-information">
+                                <h3 id="milestoneTitle">Sin próximo hito registrado</h3>
+                                <p id="milestoneFullDate">No se ha establecido una fecha.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">ARCHIVOS DEL CASO</p>
+                                <h2>Documentos</h2>
+                            </div>
+
+                            <span class="section-counter" id="documentsCounter">0 documentos</span>
+                        </div>
+
+                        <div id="documentsEmpty" class="empty-state hidden">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 2h8l4 4v16H6z"></path>
+                                    <path d="M14 2v5h5"></path>
+                                    <path d="M9 12h6"></path>
+                                    <path d="M9 16h6"></path>
+                                </svg>
+                            </div>
+
+                            <h3>No hay documentos registrados</h3>
+                            <p>Este expediente todavía no tiene documentos asociados.</p>
+                        </div>
+
+                        <div id="documentsTableContainer" class="table-container">
+                            <table class="detail-table">
+                                <thead>
+                                    <tr>
+                                        <th>Documento</th>
+                                        <th>Tipo</th>
+                                        <th>Versión</th>
+                                        <th>Responsable</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="documentsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">GESTIÓN INTERNA</p>
+                                <h2>Tareas del Expediente</h2>
+                            </div>
+
+                            <span class="section-counter" id="tasksCounter">0 tareas</span>
+                        </div>
+
+                        <div id="tasksEmpty" class="empty-state hidden">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M9 11l2 2 4-5"></path>
+                                    <path d="M5 3h14v18H5z"></path>
+                                </svg>
+                            </div>
+
+                            <h3>No hay tareas registradas</h3>
+                            <p>Este expediente todavía no tiene actividades asignadas.</p>
+                        </div>
+
+                        <div id="tasksList" class="tasks-list"></div>
+                    </section>
+
+                    <section class="detail-card observations-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">NOTAS DEL CASO</p>
+                                <h2>Observaciones</h2>
+                            </div>
+                        </div>
+
+                        <p id="caseObservations">No existen observaciones registradas para este expediente.</p>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/expediente-detalle.js"></script>
+</body>
+</html>

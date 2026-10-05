@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Tarea | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/tarea-detalle.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item active">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión de Tareas</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar tarea...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="detail-content">
+                <div class="breadcrumb">
+                    <a href="./tareas.html">Tareas</a>
+                    <span>/</span>
+                    <span id="breadcrumbTask">Detalle de tarea</span>
+                </div>
+
+                <div class="detail-error hidden" id="detailError">
+                    <strong>No se pudo cargar la tarea</strong>
+                    <p id="detailErrorMessage">Ocurrió un problema al consultar la información.</p>
+                    <a href="./tareas.html">Volver a tareas</a>
+                </div>
+
+                <div class="detail-body hidden" id="detailBody">
+                    <section class="task-heading">
+                        <div>
+                            <p class="section-eyebrow">DETALLE DE TAREA</p>
+
+                            <div class="title-row">
+                                <h1 id="taskTitle">Tarea</h1>
+                                <span class="status-badge" id="taskStatus">Pendiente</span>
+                            </div>
+
+                            <div class="task-meta">
+                                <span id="taskCode">—</span>
+                                <span class="meta-separator"></span>
+                                <span id="taskPriority">—</span>
+                            </div>
+                        </div>
+
+                        <div class="heading-actions">
+                            <a href="./tareas.html" class="secondary-button">Volver</a>
+                            <a href="./tarea-formulario.html" class="secondary-button" id="editTaskButton">Editar tarea</a>
+
+                            <select id="statusSelect" class="status-control">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En curso">En curso</option>
+                                <option value="Completada">Completada</option>
+                                <option value="Bloqueada">Bloqueada</option>
+                                <option value="Cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <section class="summary-grid">
+                        <article class="summary-card">
+                            <span>Fecha asignación</span>
+                            <strong id="summaryAssigned">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Fecha límite</span>
+                            <strong id="summaryDeadline">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Prioridad</span>
+                            <strong id="summaryPriority">—</strong>
+                        </article>
+
+                        <article class="summary-card">
+                            <span>Revisión abogado</span>
+                            <strong id="summaryReview">—</strong>
+                        </article>
+                    </section>
+
+                    <section class="detail-layout">
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">INFORMACIÓN</p>
+                                        <h2>Datos de la tarea</h2>
+                                    </div>
+                                </div>
+
+                                <div class="information-grid">
+                                    <div class="information-item">
+                                        <span>Estado</span>
+                                        <strong id="infoStatus">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Prioridad</span>
+                                        <strong id="infoPriority">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Fecha de asignación</span>
+                                        <strong id="infoAssigned">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Fecha límite</span>
+                                        <strong id="infoDeadline">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Fecha de cierre</span>
+                                        <strong id="infoClosed">—</strong>
+                                    </div>
+
+                                    <div class="information-item">
+                                        <span>Segundo control</span>
+                                        <strong id="infoSecondControl">—</strong>
+                                    </div>
+
+                                    <div class="information-item full-width">
+                                        <span>Observaciones</span>
+                                        <strong id="infoObservations">Sin observaciones registradas.</strong>
+                                    </div>
+
+                                    <div class="information-item full-width">
+                                        <span>Evidencia</span>
+                                        <a href="#" id="evidenceLink" class="detail-link hidden" target="_blank" rel="noopener noreferrer">Abrir evidencia</a>
+                                        <strong id="evidenceEmpty">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">EXPEDIENTE</p>
+                                        <h2>Expediente asociado</h2>
+                                    </div>
+
+                                    <a href="./expedientes.html" class="text-action" id="caseDetailButton">Ver expediente</a>
+                                </div>
+
+                                <div class="entity-profile">
+                                    <div class="entity-icon">▣</div>
+
+                                    <div>
+                                        <span class="entity-label">EXPEDIENTE</span>
+                                        <h3 id="caseCode">—</h3>
+                                        <p id="caseTitle">—</p>
+                                    </div>
+                                </div>
+
+                                <div class="entity-information">
+                                    <div>
+                                        <span>Número</span>
+                                        <strong id="caseNumber">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Estado</span>
+                                        <strong id="caseStatus">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Próximo hito</span>
+                                        <strong id="caseMilestone">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Fecha del hito</span>
+                                        <strong id="caseMilestoneDate">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="detail-column">
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">RESPONSABLE</p>
+                                        <h2>Persona asignada</h2>
+                                    </div>
+                                </div>
+
+                                <div class="person-card">
+                                    <div class="person-avatar" id="responsibleAvatar">RS</div>
+
+                                    <div class="person-main">
+                                        <h3 id="responsibleName">—</h3>
+                                        <p>Responsable de la tarea</p>
+                                    </div>
+                                </div>
+
+                                <div class="person-contact">
+                                    <div>
+                                        <span>Correo</span>
+                                        <strong id="responsibleEmail">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Teléfono</span>
+                                        <strong id="responsiblePhone">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">CLIENTE</p>
+                                        <h2>Cliente relacionado</h2>
+                                    </div>
+                                </div>
+
+                                <div class="person-card">
+                                    <div class="person-avatar client" id="clientAvatar">CL</div>
+
+                                    <div class="person-main">
+                                        <h3 id="clientName">—</h3>
+                                        <p>Cliente del expediente</p>
+                                    </div>
+
+                                    <a href="./clientes.html" class="person-action" id="clientDetailButton">Ver ficha</a>
+                                </div>
+
+                                <div class="person-contact">
+                                    <div>
+                                        <span>Correo</span>
+                                        <strong id="clientEmail">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Teléfono</span>
+                                        <strong id="clientPhone">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="detail-card review-card">
+                                <div class="card-title">
+                                    <div>
+                                        <p class="card-eyebrow">CONTROL</p>
+                                        <h2>Revisión jurídica</h2>
+                                    </div>
+                                </div>
+
+                                <div class="review-content">
+                                    <div class="review-icon">✓</div>
+
+                                    <div>
+                                        <strong id="reviewTitle">Revisión no requerida</strong>
+                                        <p id="reviewText">Esta tarea no requiere revisión adicional de un abogado.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/tarea-detalle.js"></script>
+</body>
+</html>

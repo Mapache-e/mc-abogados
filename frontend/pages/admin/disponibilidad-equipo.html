@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidad del Equipo | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/disponibilidad-equipo.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item active">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Disponibilidad del Equipo</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar disponibilidad...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="availability-content">
+                <div class="breadcrumb">
+                    <a href="./agenda-audiencias.html">Agenda y Audiencias</a>
+                    <span>/</span>
+                    <span>Disponibilidad del Equipo</span>
+                </div>
+
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">ORGANIZACIÓN DEL EQUIPO</p>
+                        <h2>Disponibilidad</h2>
+                        <p>Administra los horarios disponibles y ocupados de abogados y practicantes.</p>
+                    </div>
+
+                    <button class="primary-button" id="newAvailabilityButton">+ Nuevo bloque</button>
+                </div>
+
+                <section class="summary-grid">
+                    <article class="summary-card">
+                        <span>Bloques registrados</span>
+                        <strong id="totalBlocks">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Disponibles</span>
+                        <strong id="availableBlocks">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Ocupados</span>
+                        <strong id="busyBlocks">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Profesionales</span>
+                        <strong id="teamCount">0</strong>
+                    </article>
+                </section>
+
+                <section class="filters-card">
+                    <input type="text" id="searchInput" placeholder="Buscar profesional...">
+
+                    <select id="roleFilter">
+                        <option value="">Todos los roles</option>
+                        <option value="Abogado">Abogados</option>
+                        <option value="Practicante">Practicantes</option>
+                    </select>
+
+                    <select id="availabilityFilter">
+                        <option value="">Todos los estados</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="ocupado">Ocupado</option>
+                    </select>
+
+                    <input type="date" id="dateFilter">
+
+                    <button type="button" id="clearFilters">Limpiar</button>
+                </section>
+
+                <div class="loading-state" id="loadingState">Cargando disponibilidad...</div>
+
+                <div class="empty-state hidden" id="emptyState">
+                    No se encontraron bloques.
+                </div>
+
+                <section class="availability-grid hidden" id="availabilityGrid"></section>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="availabilityModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <p class="section-eyebrow">HORARIO DEL EQUIPO</p>
+                    <h3 id="modalTitle">Nuevo bloque</h3>
+                </div>
+
+                <button type="button" class="close-button" id="closeModal">×</button>
+            </div>
+
+            <form id="availabilityForm">
+                <input type="hidden" id="availabilityId">
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="personSelect">Profesional *</label>
+                        <select id="personSelect" required>
+                            <option value="">Seleccionar...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateInput">Fecha *</label>
+                        <input type="date" id="dateInput" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="statusInput">Estado *</label>
+                        <select id="statusInput" required>
+                            <option value="true">Disponible</option>
+                            <option value="false">Ocupado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startTimeInput">Hora inicio *</label>
+                        <input type="time" id="startTimeInput" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endTimeInput">Hora fin *</label>
+                        <input type="time" id="endTimeInput" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="reasonInput">Motivo / observación</label>
+                        <textarea id="reasonInput" rows="4" placeholder="Ej. Reunión con cliente, bloque disponible..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" id="cancelModal">Cancelar</button>
+                    <button type="submit" class="primary-button" id="saveButton">Guardar bloque</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../js/disponibilidad-equipo.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Recibo | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/recibo-formulario.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Reportes y Costos</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar recibo...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="receipt-content">
+                <div class="breadcrumb">
+                    <a href="./reportes-costos.html">Reportes y Costos</a>
+                    <span>/</span>
+                    <span>Registrar recibo</span>
+                </div>
+
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">CONTROL DE PAGOS</p>
+                        <h2>Registrar recibo</h2>
+                        <p>Registra el pago efectuado por un cliente y genera su comprobante interno.</p>
+                    </div>
+                </div>
+
+                <div class="form-message hidden" id="formMessage"></div>
+
+                <div class="receipt-layout">
+                    <form class="receipt-form" id="receiptForm">
+                        <section class="form-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">MOVIMIENTO ECONÓMICO</p>
+                                    <h3>Información del pago</h3>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="movementId">Movimiento económico *</label>
+                                    <input type="number" id="movementId" min="1" placeholder="ID del movimiento" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="clientName">Cliente</label>
+                                    <input type="text" id="clientName" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="caseCode">Expediente</label>
+                                    <input type="text" id="caseCode" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="serviceName">Servicio</label>
+                                    <input type="text" id="serviceName" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pendingAmount">Saldo pendiente</label>
+                                    <input type="text" id="pendingAmount" readonly>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="form-card">
+                            <div class="card-header">
+                                <div>
+                                    <p class="card-eyebrow">RECIBO</p>
+                                    <h3>Datos del comprobante</h3>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="issueDate">Fecha de emisión *</label>
+                                    <input type="date" id="issueDate" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="amount">Monto recibido *</label>
+                                    <input type="number" id="amount" min="0.01" step="0.01" required>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="concept">Concepto *</label>
+                                    <input type="text" id="concept" maxlength="250" placeholder="Pago por servicios legales..." required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentMethod">Método de pago *</label>
+                                    <select id="paymentMethod" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Transferencia bancaria">Transferencia bancaria</option>
+                                        <option value="Yape">Yape</option>
+                                        <option value="Plin">Plin</option>
+                                        <option value="Tarjeta">Tarjeta</option>
+                                        <option value="Deposito">Depósito</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="observations">Observaciones</label>
+                                    <textarea id="observations" rows="5" maxlength="1000" placeholder="Información adicional del pago..."></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="form-actions">
+                            <a href="./reportes-costos.html" class="secondary-button">Cancelar</a>
+
+                            <button type="submit" class="primary-button" id="saveButton">
+                                Registrar recibo
+                            </button>
+                        </div>
+                    </form>
+
+                    <aside class="payment-summary">
+                        <section class="summary-card">
+                            <p class="card-eyebrow">RESUMEN</p>
+                            <h3>Estado del movimiento</h3>
+
+                            <div class="summary-row">
+                                <span>Monto acordado</span>
+                                <strong id="summaryAgreed">S/ 0.00</strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Monto cobrado</span>
+                                <strong id="summaryCollected">S/ 0.00</strong>
+                            </div>
+
+                            <div class="summary-row pending">
+                                <span>Saldo pendiente</span>
+                                <strong id="summaryPending">S/ 0.00</strong>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-row highlight">
+                                <span>Nuevo pago</span>
+                                <strong id="summaryNewPayment">S/ 0.00</strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Saldo posterior</span>
+                                <strong id="summaryRemaining">S/ 0.00</strong>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/recibo-formulario.js"></script>
+</body>
+</html>

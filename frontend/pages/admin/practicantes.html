@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicantes | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/practicantes.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item active">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión de Practicantes</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar practicante...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="practicantes-content">
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">EQUIPO EN FORMACIÓN</p>
+                        <h2>Practicantes</h2>
+                        <p class="page-description">Consulta la carga de trabajo, tareas y expedientes asignados a los practicantes del estudio.</p>
+                    </div>
+
+                    <a href="./practicante-formulario.html" class="primary-action">
+                        <span>+</span>
+                        Nuevo practicante
+                    </a>
+                </div>
+
+                <section class="summary-grid">
+                    <article class="summary-card">
+                        <span>Total practicantes</span>
+                        <strong id="totalCount">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Activos</span>
+                        <strong id="activeCount">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Expedientes activos</span>
+                        <strong id="caseCount">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Tareas pendientes</span>
+                        <strong id="taskCount">0</strong>
+                    </article>
+                </section>
+
+                <section class="filters-card">
+                    <div class="search-container">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+
+                        <input type="text" id="searchInput" placeholder="Buscar por nombre, correo o materia...">
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="matterFilter">
+                            <option value="">Todas las materias</option>
+                        </select>
+
+                        <select id="statusFilter">
+                            <option value="">Todos los estados</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+
+                        <button type="button" id="clearFilters">Limpiar filtros</button>
+                    </div>
+                </section>
+
+                <div class="loading-state" id="loadingState">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando practicantes...</p>
+                </div>
+
+                <div class="error-state hidden" id="errorState">
+                    <span>!</span>
+                    <h3>No se pudieron cargar los practicantes</h3>
+                    <p id="errorMessage">Ocurrió un problema al consultar la información.</p>
+                </div>
+
+                <div class="empty-state hidden" id="emptyState">
+                    <span>◇</span>
+                    <h3>No se encontraron practicantes</h3>
+                    <p>Prueba cambiando los filtros de búsqueda.</p>
+                </div>
+
+                <section class="practicantes-grid hidden" id="practicantesGrid"></section>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/practicantes.js"></script>
+</body>
+</html>

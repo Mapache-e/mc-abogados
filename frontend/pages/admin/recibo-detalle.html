@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/recibo-detalle.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Recibos y Pagos</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar recibo...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="receipt-detail-content">
+                <div class="breadcrumb">
+                    <a href="./reportes-costos.html">Reportes y Costos</a>
+                    <span>/</span>
+                    <span id="breadcrumbReceipt">Recibo</span>
+                </div>
+
+                <div class="detail-error hidden" id="detailError">
+                    <strong>No se pudo cargar el recibo</strong>
+                    <p id="detailErrorMessage">Ocurrió un problema al consultar la información.</p>
+                    <a href="./reportes-costos.html">Volver a Reportes y Costos</a>
+                </div>
+
+                <div class="detail-body hidden" id="detailBody">
+                    <div class="page-heading">
+                        <div>
+                            <p class="section-eyebrow">COMPROBANTE DE PAGO</p>
+                            <h2 id="pageReceiptNumber">Recibo</h2>
+                            <p>Consulta el detalle del pago registrado en el sistema.</p>
+                        </div>
+
+                        <div class="heading-actions">
+                            <a href="./reportes-costos.html" class="secondary-button">Volver</a>
+                            <button type="button" class="primary-button" id="printButton">Imprimir recibo</button>
+                        </div>
+                    </div>
+
+                    <div class="receipt-layout">
+                        <article class="receipt-paper" id="receiptPaper">
+                            <header class="receipt-header">
+                                <div class="receipt-brand">
+                                    <h1>M&C</h1>
+                                    <span>ESTUDIO JURÍDICO</span>
+                                </div>
+
+                                <div class="receipt-number-box">
+                                    <span>RECIBO</span>
+                                    <strong id="receiptNumber">—</strong>
+                                </div>
+                            </header>
+
+                            <div class="gold-line"></div>
+
+                            <section class="receipt-title">
+                                <p>RECIBO POR SERVICIOS LEGALES</p>
+                                <h2 id="receiptAmountMain">S/ 0.00</h2>
+                                <span id="receiptDateMain">—</span>
+                            </section>
+
+                            <section class="receipt-section">
+                                <div class="section-label">DATOS DEL CLIENTE</div>
+
+                                <div class="info-grid">
+                                    <div class="info-item full-width">
+                                        <span>Cliente</span>
+                                        <strong id="clientName">—</strong>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <span>Documento</span>
+                                        <strong id="clientDocument">—</strong>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <span>Código</span>
+                                        <strong id="clientCode">—</strong>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <span>Correo</span>
+                                        <strong id="clientEmail">—</strong>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <span>Teléfono</span>
+                                        <strong id="clientPhone">—</strong>
+                                    </div>
+
+                                    <div class="info-item full-width">
+                                        <span>Dirección</span>
+                                        <strong id="clientAddress">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="receipt-section">
+                                <div class="section-label">SERVICIO Y EXPEDIENTE</div>
+
+                                <div class="service-box">
+                                    <div>
+                                        <span>Concepto</span>
+                                        <strong id="receiptConcept">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Servicio</span>
+                                        <strong id="serviceName">—</strong>
+                                    </div>
+                                </div>
+
+                                <div class="case-box">
+                                    <div>
+                                        <span>Expediente</span>
+                                        <strong id="caseCode">—</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Número</span>
+                                        <strong id="caseNumber">—</strong>
+                                    </div>
+
+                                    <div class="full-width">
+                                        <span>Asunto</span>
+                                        <strong id="caseTitle">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="receipt-section">
+                                <div class="section-label">INFORMACIÓN DEL PAGO</div>
+
+                                <div class="payment-grid">
+                                    <div class="payment-item">
+                                        <span>Fecha de emisión</span>
+                                        <strong id="receiptDate">—</strong>
+                                    </div>
+
+                                    <div class="payment-item">
+                                        <span>Método de pago</span>
+                                        <strong id="paymentMethod">—</strong>
+                                    </div>
+
+                                    <div class="payment-item">
+                                        <span>Monto recibido</span>
+                                        <strong id="receiptAmount">S/ 0.00</strong>
+                                    </div>
+
+                                    <div class="payment-item">
+                                        <span>Estado</span>
+                                        <strong class="payment-status">Registrado</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="receipt-section movement-section">
+                                <div class="section-label">ESTADO DEL SERVICIO</div>
+
+                                <div class="financial-summary">
+                                    <div>
+                                        <span>Monto acordado</span>
+                                        <strong id="agreedAmount">S/ 0.00</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Total cobrado</span>
+                                        <strong id="collectedAmount">S/ 0.00</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Saldo pendiente</span>
+                                        <strong id="remainingAmount">S/ 0.00</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Estado de cobro</span>
+                                        <strong id="paymentStatus">—</strong>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="receipt-section observations-section">
+                                <div class="section-label">OBSERVACIONES</div>
+                                <p id="receiptObservations">Sin observaciones registradas.</p>
+                            </section>
+
+                            <footer class="receipt-footer">
+                                <div>
+                                    <strong>Estudio Jurídico M&C</strong>
+                                    <span>Comprobante interno de pago</span>
+                                </div>
+
+                                <div class="signature-box">
+                                    <div class="signature-line"></div>
+                                    <span>Firma y sello</span>
+                                </div>
+                            </footer>
+                        </article>
+
+                        <aside class="receipt-side">
+                            <section class="side-card">
+                                <p class="card-eyebrow">RESUMEN</p>
+                                <h3>Información del recibo</h3>
+
+                                <div class="side-row">
+                                    <span>Número</span>
+                                    <strong id="sideReceiptNumber">—</strong>
+                                </div>
+
+                                <div class="side-row">
+                                    <span>Fecha</span>
+                                    <strong id="sideReceiptDate">—</strong>
+                                </div>
+
+                                <div class="side-row">
+                                    <span>Monto</span>
+                                    <strong id="sideReceiptAmount">S/ 0.00</strong>
+                                </div>
+
+                                <div class="side-row">
+                                    <span>Método</span>
+                                    <strong id="sidePaymentMethod">—</strong>
+                                </div>
+                            </section>
+
+                            <section class="side-card">
+                                <p class="card-eyebrow">ACCESOS RÁPIDOS</p>
+                                <h3>Información relacionada</h3>
+
+                                <a href="./clientes.html" class="side-link" id="clientDetailButton">
+                                    Ver cliente
+                                </a>
+
+                                <a href="./expedientes.html" class="side-link" id="caseDetailButton">
+                                    Ver expediente
+                                </a>
+
+                                <a href="./reportes-costos.html" class="side-link">
+                                    Volver a reportes
+                                </a>
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/recibo-detalle.js"></script>
+</body>
+</html>

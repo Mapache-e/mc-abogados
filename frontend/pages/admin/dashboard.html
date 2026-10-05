@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&amp;C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" id="logoutButton" class="logout-button">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button type="button" class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
+                    <h1 class="topbar-title">Panel de Control General</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20l-4-4"></path>
+                        </svg>
+                        <input type="search" id="globalSearch" placeholder="Buscar expediente..." autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button type="button" class="notification-button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <section class="welcome-section">
+                    <div>
+                        <p class="section-eyebrow">RESUMEN GENERAL</p>
+                        <h2>Buenos días, <span id="welcomeName">María</span></h2>
+                        <p>Este es el estado actual del estudio jurídico.</p>
+                    </div>
+
+                    <div class="current-date" id="currentDate"></div>
+                </section>
+
+                <section class="kpi-grid">
+                    <article class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Expedientes Activos</span>
+                            <div class="kpi-icon">▣</div>
+                        </div>
+
+                        <strong class="kpi-value" id="activeCases">--</strong>
+                        <p><span class="positive">↑</span> Procesos actualmente en curso</p>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Clientes Activos</span>
+                            <div class="kpi-icon">♧</div>
+                        </div>
+
+                        <strong class="kpi-value" id="activeClients">--</strong>
+                        <p>Clientes registrados en el estudio</p>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Audiencias Próximas</span>
+                            <div class="kpi-icon">□</div>
+                        </div>
+
+                        <strong class="kpi-value" id="upcomingHearings">--</strong>
+                        <p>Programadas para los próximos días</p>
+                    </article>
+
+                    <article class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Tareas Pendientes</span>
+                            <div class="kpi-icon">✓</div>
+                        </div>
+
+                        <strong class="kpi-value" id="pendingTasks">--</strong>
+                        <p>Actividades pendientes del equipo</p>
+                    </article>
+                </section>
+
+                <section class="dashboard-grid">
+                    <article class="dashboard-card case-distribution">
+                        <div class="card-header">
+                            <div>
+                                <h3>Distribución de Expedientes</h3>
+                                <p>Expedientes activos por tipo de asunto</p>
+                            </div>
+
+                            <a href="./reportes-costos.html" class="card-action">Ver reporte</a>
+                        </div>
+
+                        <div class="chart-container" id="caseChart">
+                            <div class="chart-empty">
+                                <span>▥</span>
+                                <p>Cargando información...</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="dashboard-card hearings-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Próximas Audiencias</h3>
+                                <p>Agenda jurídica del estudio</p>
+                            </div>
+
+                            <a href="./agenda-audiencias.html" class="card-action">Ver agenda</a>
+                        </div>
+
+                        <div class="hearings-list" id="hearingsList">
+                            <div class="empty-state">
+                                <span>□</span>
+                                <p>No hay audiencias para mostrar.</p>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/dashboard.js"></script>
+</body>
+</html>

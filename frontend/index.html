@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | M&C Abogados</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <main class="login-page">
+
+        <section class="login-brand">
+            <div class="brand-overlay"></div>
+
+            <div class="brand-content">
+                <header class="brand-logo">
+                    <h1>Estudio Jurídico M&amp;C</h1>
+                    <div class="brand-line"></div>
+                </header>
+
+                <div class="brand-message">
+                    <blockquote>
+                        "Compromiso inquebrantable, excelencia en la práctica del derecho corporativo y civil."
+                    </blockquote>
+                    <p>M&amp;C Legal Tech Platform v2.4</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-panel">
+            <div class="login-container">
+
+                <header class="login-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Ingrese sus credenciales de acceso institucional.</p>
+                </header>
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+                        <label class="form-label">SELECCIONAR ROL DE ACCESO</label>
+
+                        <div class="role-selector">
+                            <button type="button" class="role-card" data-role="Administrador">
+                                <span class="role-icon">⚙</span>
+                                <span>Administrador</span>
+                            </button>
+
+                            <button type="button" class="role-card" data-role="Abogado">
+                                <span class="role-icon">♙</span>
+                                <span>Abogado</span>
+                            </button>
+
+                            <button type="button" class="role-card" data-role="Practicante">
+                                <span class="role-icon">☷</span>
+                                <span>Practicante</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="correo@mcabogados.pe" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" placeholder="••••••••••••" autocomplete="current-password" required>
+
+                            <button type="button" id="togglePassword" class="password-toggle" aria-label="Mostrar contraseña">
+                                ◉
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="login-options">
+                        <label class="remember-option">
+                            <input type="checkbox" id="recordar">
+                            <span>Recordar dispositivo</span>
+                        </label>
+
+                        <button type="button" class="forgot-password">
+                            ¿Olvidó su contraseña?
+                        </button>
+                    </div>
+
+                    <div id="loginMessage" class="login-message" aria-live="polite"></div>
+
+                    <button type="submit" class="login-button">
+                        <span>Acceder de forma segura</span>
+                        <span>↗</span>
+                    </button>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>

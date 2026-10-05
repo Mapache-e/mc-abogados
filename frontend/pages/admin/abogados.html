@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Abogados | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/abogados.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item active">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión del Equipo Legal</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar abogado...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="abogados-content">
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">EQUIPO PROFESIONAL</p>
+                        <h2>Nuestros Abogados</h2>
+                        <p class="page-description">Consulta la información profesional, especialidades y carga de trabajo del equipo legal.</p>
+                    </div>
+
+                    <a href="./abogado-formulario.html" class="primary-action">
+                        <span>+</span>
+                        Nuevo abogado
+                    </a>
+                </div>
+
+                <section class="summary-grid">
+                    <article class="summary-card">
+                        <div class="summary-icon">♙</div>
+                        <div>
+                            <span>Abogados registrados</span>
+                            <strong id="totalLawyers">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="summary-card">
+                        <div class="summary-icon">✓</div>
+                        <div>
+                            <span>Abogados activos</span>
+                            <strong id="activeLawyers">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="summary-card">
+                        <div class="summary-icon">▣</div>
+                        <div>
+                            <span>Expedientes asignados</span>
+                            <strong id="assignedCases">0</strong>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="filters-card">
+                    <div class="search-container">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+
+                        <input type="text" id="searchInput" placeholder="Buscar por nombre, especialidad, colegiatura o correo...">
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="specialtyFilter">
+                            <option value="">Todas las especialidades</option>
+                        </select>
+
+                        <select id="statusFilter">
+                            <option value="">Todos los estados</option>
+                            <option value="activo">Activos</option>
+                            <option value="inactivo">Inactivos</option>
+                        </select>
+
+                        <button type="button" class="clear-filters" id="clearFilters">Limpiar filtros</button>
+                    </div>
+                </section>
+
+                <section class="lawyers-section">
+                    <div class="section-heading">
+                        <div>
+                            <h3>Directorio profesional</h3>
+                            <p id="lawyerCounter">0 abogados encontrados</p>
+                        </div>
+                    </div>
+
+                    <div class="loading-state" id="loadingState">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando abogados...</p>
+                    </div>
+
+                    <div class="error-state hidden" id="errorState">
+                        <span>!</span>
+                        <h3>No se pudo cargar el equipo legal</h3>
+                        <p id="errorMessage">Ocurrió un problema al consultar los abogados.</p>
+                    </div>
+
+                    <div class="empty-state hidden" id="emptyState">
+                        <span>♙</span>
+                        <h3>No se encontraron abogados</h3>
+                        <p>No existen abogados que coincidan con los filtros seleccionados.</p>
+                    </div>
+
+                    <div class="lawyers-grid hidden" id="lawyersGrid"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/abogados.js"></script>
+</body>
+</html>

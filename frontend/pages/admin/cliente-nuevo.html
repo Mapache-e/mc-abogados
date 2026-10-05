@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Cliente | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/cliente-formulario.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item active">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Gestión de Clientes</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar cliente...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="form-content">
+                <div class="breadcrumb">
+                    <a href="./clientes.html">Clientes</a>
+                    <span>/</span>
+                    <span id="breadcrumbCurrent">Nuevo cliente</span>
+                </div>
+
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">GESTIÓN DE CLIENTES</p>
+                        <h2 id="pageTitle">Registrar nuevo cliente</h2>
+                        <p class="page-description" id="pageDescription">Completa la información necesaria para registrar al cliente en el sistema.</p>
+                    </div>
+                </div>
+
+                <div class="form-message hidden" id="formMessage"></div>
+
+                <form id="clientForm">
+                    <section class="form-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">IDENTIFICACIÓN</p>
+                                <h3>Información principal</h3>
+                            </div>
+                        </div>
+
+                        <div class="identity-layout">
+                            <div class="photo-section">
+                                <div class="photo-preview" id="photoPreview">
+                                    <span id="photoInitials">MC</span>
+                                    <img id="photoImage" class="hidden" alt="Fotografía del cliente">
+                                </div>
+
+                                <div class="photo-information">
+                                    <strong>Fotografía o logotipo</strong>
+                                    <p>Puedes registrar una dirección de imagen para identificar al cliente.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="tipoDocumento">Tipo de documento *</label>
+                                    <select id="tipoDocumento" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="DNI">DNI</option>
+                                        <option value="RUC">RUC</option>
+                                        <option value="CE">Carné de extranjería</option>
+                                        <option value="PASAPORTE">Pasaporte</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="numeroDocumento">Número de documento *</label>
+                                    <input type="text" id="numeroDocumento" maxlength="20" placeholder="Ingrese el número" required>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="nombreCliente">Nombre o razón social *</label>
+                                    <input type="text" id="nombreCliente" maxlength="200" placeholder="Nombre completo o razón social" required>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="fotoUrl">URL de fotografía o logotipo</label>
+                                    <input type="url" id="fotoUrl" placeholder="https://...">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="form-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">CONTACTO</p>
+                                <h3>Datos de contacto</h3>
+                            </div>
+                        </div>
+
+                        <div class="form-grid card-form-content">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" maxlength="30" placeholder="+51 999 999 999">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="correo">Correo electrónico</label>
+                                <input type="email" id="correo" maxlength="150" placeholder="cliente@correo.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactoPrincipal">Contacto principal</label>
+                                <input type="text" id="contactoPrincipal" maxlength="200" placeholder="Persona de contacto">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="representanteLegal">Representante legal</label>
+                                <input type="text" id="representanteLegal" maxlength="200" placeholder="Representante legal">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="direccion">Dirección</label>
+                                <input type="text" id="direccion" maxlength="300" placeholder="Dirección del cliente">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="form-card">
+                        <div class="card-title">
+                            <div>
+                                <p class="card-eyebrow">INFORMACIÓN ADICIONAL</p>
+                                <h3>Observaciones y contacto</h3>
+                            </div>
+                        </div>
+
+                        <div class="form-grid card-form-content">
+                            <div class="form-group">
+                                <label for="consentimientoContacto">Consentimiento de contacto</label>
+                                <select id="consentimientoContacto">
+                                    <option value="">No especificado</option>
+                                    <option value="Si">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="observaciones">Observaciones</label>
+                                <textarea id="observaciones" rows="5" maxlength="1000" placeholder="Información adicional sobre el cliente..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="form-actions">
+                        <a href="./clientes.html" class="cancel-button">Cancelar</a>
+                        <button type="submit" class="save-button" id="saveButton">
+                            <span id="saveButtonText">Registrar cliente</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/cliente-formulario.js"></script>
+</body>
+</html>

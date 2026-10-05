@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda y Audiencias | M&C Abogados</title>
+    <link rel="stylesheet" href="../../css/agenda-audiencias.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>M&C</h1>
+                <span>ESTUDIO JURÍDICO</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="./expedientes.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>Expedientes</span>
+                </a>
+
+                <a href="./agenda-audiencias.html" class="nav-item active">
+                    <span class="nav-icon">◫</span>
+                    <span>Agenda y Audiencias</span>
+                </a>
+
+                <a href="./abogados.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Nuestros Abogados</span>
+                </a>
+
+                <a href="./clientes.html" class="nav-item">
+                    <span class="nav-icon">♧</span>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="./practicantes.html" class="nav-item">
+                    <span class="nav-icon">♢</span>
+                    <span>Practicantes</span>
+                </a>
+
+                <a href="./tareas.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>Tareas</span>
+                </a>
+
+                <a href="./reportes-costos.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes y Costos</span>
+                </a>
+
+                <a href="./configuracion.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-button" id="logoutButton">
+                    <span class="nav-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <h1 class="topbar-title">Agenda y Audiencias</h1>
+                </div>
+
+                <div class="topbar-center">
+                    <div class="topbar-search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+                        <input type="text" id="globalSearch" placeholder="Buscar audiencia...">
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <button class="notification-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-information">
+                            <strong>
+                                <span class="professional-title">Dra.</span>
+                                <span id="userName">María Torres</span>
+                            </strong>
+                            <span id="userRole">ADMINISTRADOR</span>
+                        </div>
+
+                        <div class="user-avatar" id="userAvatar">MT</div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="agenda-content">
+                <div class="page-heading">
+                    <div>
+                        <p class="section-eyebrow">PROGRAMACIÓN JURÍDICA</p>
+                        <h2>Agenda y Audiencias</h2>
+                        <p class="page-description">Consulta las audiencias programadas, próximos eventos y disponibilidad del equipo legal.</p>
+                    </div>
+
+                    <div class="page-actions">
+                        <a href="./disponibilidad-equipo.html" class="secondary-action">
+                            Disponibilidad del equipo
+                        </a>
+
+                        <a href="./audiencia-formulario.html" class="primary-action">
+                            <span>+</span>
+                            Nueva audiencia
+                        </a>
+                    </div>
+                </div>
+
+                <section class="summary-grid">
+                    <article class="summary-card">
+                        <span>Audiencias programadas</span>
+                        <strong id="scheduledHearings">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Audiencias de hoy</span>
+                        <strong id="todayHearings">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Próximos 7 días</span>
+                        <strong id="weekHearings">0</strong>
+                    </article>
+
+                    <article class="summary-card">
+                        <span>Bloques disponibles</span>
+                        <strong id="availableSlots">0</strong>
+                    </article>
+                </section>
+
+                <section class="filters-card">
+                    <div class="search-container">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20L16.5 16.5"></path>
+                        </svg>
+
+                        <input type="text" id="searchInput" placeholder="Buscar por audiencia, cliente, expediente o abogado...">
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="statusFilter">
+                            <option value="">Todos los estados</option>
+                            <option value="Programada">Programada</option>
+                            <option value="Realizada">Realizada</option>
+                            <option value="Reprogramada">Reprogramada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+
+                        <select id="modalityFilter">
+                            <option value="">Todas las modalidades</option>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Virtual">Virtual</option>
+                            <option value="Híbrida">Híbrida</option>
+                        </select>
+
+                        <button type="button" class="clear-filters" id="clearFilters">Limpiar filtros</button>
+                    </div>
+                </section>
+
+                <section class="agenda-layout">
+                    <div class="calendar-card">
+                        <div class="calendar-header">
+                            <div>
+                                <p class="card-eyebrow">CALENDARIO</p>
+                                <h3 id="calendarTitle">Mes</h3>
+                            </div>
+
+                            <div class="calendar-navigation">
+                                <button type="button" id="previousMonth" aria-label="Mes anterior">‹</button>
+                                <button type="button" id="todayButton">Hoy</button>
+                                <button type="button" id="nextMonth" aria-label="Mes siguiente">›</button>
+                            </div>
+                        </div>
+
+                        <div class="calendar-weekdays">
+                            <span>LUN</span>
+                            <span>MAR</span>
+                            <span>MIÉ</span>
+                            <span>JUE</span>
+                            <span>VIE</span>
+                            <span>SÁB</span>
+                            <span>DOM</span>
+                        </div>
+
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                    </div>
+
+                    <aside class="agenda-sidebar">
+                        <section class="side-card">
+                            <div class="side-card-header">
+                                <div>
+                                    <p class="card-eyebrow">PRÓXIMOS EVENTOS</p>
+                                    <h3>Audiencias</h3>
+                                </div>
+
+                                <span id="upcomingCounter">0</span>
+                            </div>
+
+                            <div class="upcoming-list" id="upcomingList"></div>
+
+                            <div class="empty-state hidden" id="upcomingEmpty">
+                                <span>◇</span>
+                                <h4>Sin audiencias próximas</h4>
+                                <p>No existen eventos programados.</p>
+                            </div>
+                        </section>
+
+                        <section class="side-card">
+                            <div class="side-card-header">
+                                <div>
+                                    <p class="card-eyebrow">EQUIPO LEGAL</p>
+                                    <h3>Disponibilidad</h3>
+                                </div>
+
+                                <a href="./disponibilidad-equipo.html" class="text-action">Gestionar</a>
+                            </div>
+
+                            <div class="availability-list" id="availabilityList"></div>
+
+                            <div class="empty-state hidden" id="availabilityEmpty">
+                                <span>◫</span>
+                                <h4>Sin disponibilidad</h4>
+                                <p>No hay bloques registrados.</p>
+                            </div>
+                        </section>
+                    </aside>
+                </section>
+
+                <section class="hearings-card">
+                    <div class="hearings-header">
+                        <div>
+                            <p class="card-eyebrow">AUDIENCIAS</p>
+                            <h3>Listado de audiencias</h3>
+                            <p id="hearingCounter">0 audiencias encontradas</p>
+                        </div>
+
+                        <a href="./audiencia-formulario.html" class="primary-action small-action">
+                            <span>+</span>
+                            Nueva audiencia
+                        </a>
+                    </div>
+
+                    <div class="loading-state" id="loadingState">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando agenda...</p>
+                    </div>
+
+                    <div class="error-state hidden" id="errorState">
+                        <span>!</span>
+                        <p id="errorMessage">No se pudo cargar la agenda.</p>
+                    </div>
+
+                    <div class="empty-table-state hidden" id="emptyState">
+                        <span>◇</span>
+                        <p>No se encontraron audiencias con los filtros seleccionados.</p>
+                    </div>
+
+                    <div class="table-container hidden" id="tableContainer">
+                        <table class="hearings-table">
+                            <thead>
+                                <tr>
+                                    <th>FECHA</th>
+                                    <th>AUDIENCIA</th>
+                                    <th>EXPEDIENTE</th>
+                                    <th>CLIENTE</th>
+                                    <th>RESPONSABLE</th>
+                                    <th>MODALIDAD</th>
+                                    <th>ESTADO</th>
+                                    <th>ACCIÓN</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="hearingsTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/agenda-audiencias.js"></script>
+</body>
+</html>
